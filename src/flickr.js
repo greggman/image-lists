@@ -33,7 +33,7 @@ async function getImageUrls() {
 //  });
 
   const groupPages = [
-    //{ name: 'at-home.json', url: 'https://www.flickr.com/groups/flickr-at-home/pool/', },
+    { name: 'at-home.json', url: 'https://www.flickr.com/groups/flickr-at-home/pool/', },
     { name: 'wander.json', url: 'https://www.flickr.com/groups/pbwa/pool', },
     { name: 'mist.json', url: 'https://www.flickr.com/groups/2932332@N23/pool', },
     { name: 'f-ology.json', url: 'https://www.flickr.com/groups/flickrology/pool', },
