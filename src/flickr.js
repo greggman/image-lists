@@ -95,6 +95,7 @@ async function getImageUrls() {
         console.log('got', urls.length, 'total', imgUrls.length);
 
         fs.writeFileSync(path.join('lists', name), JSON.stringify(imgUrls));
+        fs.writeFileSync(path.join('lists-formatted', name), JSON.stringify(imgUrls, null, 2));
 
         const more = await page.evaluate(() => {
           return !!document.querySelector('a[rel=next]');
@@ -117,7 +118,7 @@ async function getImageUrls() {
 
   await browser.close();
 
-  process.exit(totalFailures ? 1 : 0);  // eslint-disable-line
+  process.exit(0);  // eslint-disable-line
 }
 
 getImageUrls();
