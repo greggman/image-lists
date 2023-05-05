@@ -39,6 +39,12 @@ async function getImageUrls() {
     { name: 'f-ology.json', url: 'https://www.flickr.com/groups/flickrology/pool', },
     { name: 'abandoned.json', url: 'https://www.flickr.com/groups/abandoned/pool', },
     { name: 'vanish.json', url: 'https://www.flickr.com/groups/parallax/pool', },
+    { name: 'catchy.json', url: 'https://www.flickr.com/groups/catchy/pool', },
+    { name: 'crazy-t.json', url: 'https://www.flickr.com/groups/crazy_tuesday/pool', },
+    { name: 'friday.json', url: 'https://www.flickr.com/groups/flickrfriday/pool', },
+    { name: 'utata.json', url: 'https://www.flickr.com/groups/utata/pool', },
+    { name: 'central.json', url: 'https://www.flickr.com/groups/central/pool', },
+    { name: 'less.json', url: 'https://www.flickr.com/groups/minimally_less_is_more/pool', },
   ];
 
   for (const {url, js, name} of groupPages) {
@@ -101,7 +107,7 @@ async function getImageUrls() {
           return !!document.querySelector('a[rel=next]');
         });
 
-        if (!more || count == 100) {
+        if (!more || count == 1000) {
           break;
         }
 
