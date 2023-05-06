@@ -100,8 +100,9 @@ async function getImageUrls() {
         imgUrls.push(...urls);
         console.log('got', urls.length, 'total', imgUrls.length);
 
+        // write each time since we might fail next
         fs.writeFileSync(path.join('lists', name), JSON.stringify(imgUrls));
-        fs.writeFileSync(path.join('lists-formatted', name), JSON.stringify(imgUrls, null, 2));
+        // fs.writeFileSync(path.join('lists-formatted', name), JSON.stringify(imgUrls, null, 2));
 
         const more = await page.evaluate(() => {
           return !!document.querySelector('a[rel=next]');
