@@ -12,5 +12,9 @@ export default async function getRandomImage() {
   const url = new URL(filename, import.meta.url);
   const res = await fetch(url.href);
   const slice = await res.json();
-  return slice[id % numPerSlice];
+  const data = slice[id % numPerSlice];
+  if (data.url.includes('flickr.com')) {
+    data.url = data.url.replace(/_[a-z]\.jpg/, '_b.jpg');
+  }
+  return data;
 }
