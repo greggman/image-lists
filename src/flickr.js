@@ -174,7 +174,7 @@ async function getImageUrls() {
     }
   }
 
-//  await extractList(groupPages, 0);
+  await extractList(groupPages, 0);
   await extractList(albums, 1);
 
   await browser.close();
