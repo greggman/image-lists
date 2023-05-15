@@ -8,6 +8,9 @@ async function main() {
     let js = fs.readFileSync('src/get-random-image-template.js', {encoding: 'utf-8'});
     js = js.replace('numImages = 0', `numImages = ${images.length}`);
     fs.writeFileSync('get-random-image.js', js);
+    fs.writeFileSync('num-images.json', JSON.stringify({numImages: images.length}));
+    console.log('num images:', images.length);
+    console.log('num files:', (images.length + 49) / 50 | 0);
   }
 
   const numPerSlice = 50;
