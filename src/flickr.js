@@ -2,7 +2,15 @@ import puppeteer from 'puppeteer'
 import path from 'path';
 import fs from 'fs';
 
+function makeFilter(reStr) {
+  const re = new RegExp(reStr, 'i');
+  return o => re.test(o.name) || re.test(o.url);
+}
+
 // const exampleInjectJS = fs.readFileSync('test/src/js/example-inject.js', {encoding: 'utf-8'});
+const filter = process.argv[2]
+  ? makeFilter(process.argv[2])
+  : () => true;
 
 function makePromiseInfo() {
   const info = {};
@@ -77,6 +85,7 @@ async function getImageUrls() {
   ];
 
   async function extractList(pages, mode) {
+    pages = pages.filter(filter);
     for (const {url, js, name} of pages) {
       try {
     //    waitingPromiseInfo = makePromiseInfo();
