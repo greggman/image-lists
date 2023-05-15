@@ -54,6 +54,10 @@ async function getImageUrls() {
     { name: 'utata.json', url: 'https://www.flickr.com/groups/utata/pool', },
     { name: 'central.json', url: 'https://www.flickr.com/groups/central/pool', },
     { name: 'less.json', url: 'https://www.flickr.com/groups/minimally_less_is_more/pool', },
+    { name: 'b-2019.json', url: 'https://www.flickr.com/groups/yourbestshot2019/pool/', },
+    { name: 'b-2018.json', url: 'https://www.flickr.com/groups/yourbestshot2018/pool/', },
+    { name: 'wpd-2021.json', url: 'https://www.flickr.com/groups/worldphotographyday2021/pool/', },
+    { name: 'dreamy.json', url: 'https://www.flickr.com/groups/dreamy-landscapes/pool', },
   ];
 
   const albums = [
