@@ -24,7 +24,14 @@ function makePromiseInfo() {
 async function getImageUrls() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  await page.setRequestInterception(true);
   page.setDefaultTimeout(200000)
+
+  page.on('request', (request) =>
+    /image/.test(request.resourceType()) && !request.isInterceptResolutionHandled()
+        ? request.respond({status: 200, body: 'aborted'})
+        : request.continue()
+  );
 
   page.on('console', async e => {
     const args = await Promise.all(e.args().map(a => a.jsonValue()));
