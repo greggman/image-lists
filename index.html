@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+body, html {
+  margin: 0;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+}
+
+#info {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 0.25em;
+  text-align: right;
+}
+a {
+  display: block;
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+    </style>
+  </head>
+  <body>
+    <div id="info">
+      <a target="_blank" id="desc"></a>
+      <a target="_blank" id="author"></a>
+    </div>
+    <script type="module">
+import getRandomImage from './get-random-image.js';
+
+const desc = document.querySelector('#desc');
+const author = document.querySelector('#author');
+
+async function main() {
+  const data = await getRandomImage();
+  document.body.style.backgroundImage = `url(${data.url})`;
+  desc.href = data.link;
+  desc.textContent = data.desc;
+  author.textContent = data.user;
+}
+
+main();
+    </script>
+  </body>
+</html>
