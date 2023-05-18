@@ -3,6 +3,10 @@ import path from 'path';
 
 async function main() {
   fs.mkdirSync('out', { recursive: true });
+
+  fs.copyFileSync('index.html', 'out/index.html');
+  fs.copyFileSync('CNAME', 'out/CNAME');
+
   const images = JSON.parse(fs.readFileSync('image-list.json', {encoding: 'utf-8'}));
 
   {
