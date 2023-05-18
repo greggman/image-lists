@@ -2,52 +2,6 @@ import puppeteer from 'puppeteer'
 import path from 'path';
 import fs from 'fs';
 
-function makeFilter(reStr) {
-  const re = new RegExp(reStr, 'i');
-  return o => re.test(o.name) || re.test(o.url);
-}
-
-// const exampleInjectJS = fs.readFileSync('test/src/js/example-inject.js', {encoding: 'utf-8'});
-const filter = process.argv[2]
-  ? makeFilter(process.argv[2])
-  : () => true;
-
-function makePromiseInfo() {
-  const info = {};
-  const promise = new Promise((resolve, reject) => {
-    Object.assign(info, {resolve, reject});
-  });
-  info.promise = promise;
-  return info;
-}
-
-async function getImageUrls() {
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setRequestInterception(true);
-  page.setDefaultTimeout(200000)
-
-  page.on('request', (request) =>
-    /image/.test(request.resourceType()) && !request.isInterceptResolutionHandled()
-        ? request.respond({status: 200, body: 'aborted'})
-        : request.continue()
-  );
-
-  page.on('console', async e => {
-    const args = await Promise.all(e.args().map(a => a.jsonValue()));
-    console.log(...args);
-  });
-
-//  let waitingPromiseInfo;
-//
-//  page.on('domcontentloaded', async() => {
-//    const failures = await page.evaluate(() => {
-//      return window.testsPromiseInfo.promise;
-//    });
-//
-//    waitingPromiseInfo.resolve();
-//  });
-
   const groupPages = [
     { name: 'at-home.json', url: 'https://www.flickr.com/groups/flickr-at-home/pool/', },
     { name: 'wander.json', url: 'https://www.flickr.com/groups/pbwa/pool', },
@@ -94,6 +48,52 @@ async function getImageUrls() {
     { name: 'g23.json', url: 'https://flickr.com/photos/greggman/albums/72157626026547251', },
     { name: 'g24.json', url: 'https://flickr.com/photos/greggman/albums/72157625547033028', },
   ];
+
+function makeFilter(reStr) {
+  const re = new RegExp(reStr, 'i');
+  return o => re.test(o.name) || re.test(o.url);
+}
+
+// const exampleInjectJS = fs.readFileSync('test/src/js/example-inject.js', {encoding: 'utf-8'});
+const filter = process.argv[2]
+  ? makeFilter(process.argv[2])
+  : () => true;
+
+function makePromiseInfo() {
+  const info = {};
+  const promise = new Promise((resolve, reject) => {
+    Object.assign(info, {resolve, reject});
+  });
+  info.promise = promise;
+  return info;
+}
+
+async function getImageUrls() {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.setRequestInterception(true);
+  page.setDefaultTimeout(200000)
+
+  page.on('request', (request) =>
+    /image/.test(request.resourceType()) && !request.isInterceptResolutionHandled()
+        ? request.respond({status: 200, body: 'aborted'})
+        : request.continue()
+  );
+
+  page.on('console', async e => {
+    const args = await Promise.all(e.args().map(a => a.jsonValue()));
+    console.log(...args);
+  });
+
+//  let waitingPromiseInfo;
+//
+//  page.on('domcontentloaded', async() => {
+//    const failures = await page.evaluate(() => {
+//      return window.testsPromiseInfo.promise;
+//    });
+//
+//    waitingPromiseInfo.resolve();
+//  });
 
   async function extractList(pages, mode) {
     pages = pages.filter(filter);
