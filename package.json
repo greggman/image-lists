@@ -5,8 +5,7 @@
   "main": "dist/list.json",
   "type": "module",
   "scripts": {
-    "process": "node src/main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node src/merge.js && node src/split.js"
   },
   "repository": {
     "type": "git",
