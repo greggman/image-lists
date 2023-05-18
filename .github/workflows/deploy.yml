@@ -17,8 +17,6 @@ jobs:
       - run: npm ci
       - run: |
           npm run build
-          mkdir out
-          cp -r README.md src standalone out out-wpt docs tools deploy-build/
       - uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: gh-pages
