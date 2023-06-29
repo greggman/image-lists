@@ -23,6 +23,8 @@ a {
   display: block;
   color: white;
   text-shadow: 1px 1px 1px black;
+  cursor: pointer;
+  text-decoration: none;
 }
     </style>
   </head>
@@ -40,9 +42,21 @@ const author = document.querySelector('#author');
 async function main() {
   const data = await getRandomImage();
   document.body.style.backgroundImage = `url(${data.url})`;
-  desc.href = data.link;
+
+ if (data.url.includes('flickr.com')) {
+    data.url = data.url.replace(/_[a-z]\.jpg/, '_b.jpg');
+    if (!data.imgLink) {
+      const m = /\/(\d+)_[a-z0-9]+(_.|)\.jpg$/.exec(data.url);
+      if (m) {
+        data.imgLink = `https://flickr.com/photo.gne?id=${m[1]}`;
+      }
+    }
+  }
+
+  desc.href = data.imgLink || data.link;
   desc.textContent = data.desc;
   author.textContent = data.user;
+  author.href = data.link;
 }
 
 main();
