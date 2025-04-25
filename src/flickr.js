@@ -3,6 +3,8 @@ import path from 'path';
 import fs from 'fs';
 
   const groupPages = [
+    { name: 'american-photographer.json', url: 'https://www.flickr.com/groups/americanphotographer/pool', },
+    /*
     { name: 'at-home.json', url: 'https://www.flickr.com/groups/flickr-at-home/pool/', },
     { name: 'wander.json', url: 'https://www.flickr.com/groups/pbwa/pool', },
     { name: 'mist.json', url: 'https://www.flickr.com/groups/2932332@N23/pool', },
@@ -19,9 +21,11 @@ import fs from 'fs';
     { name: 'b-2018.json', url: 'https://www.flickr.com/groups/yourbestshot2018/pool/', },
     { name: 'wpd-2021.json', url: 'https://www.flickr.com/groups/worldphotographyday2021/pool/', },
     { name: 'dreamy.json', url: 'https://www.flickr.com/groups/dreamy-landscapes/pool', },
+    */
   ];
 
   const albums = [
+    /*
     { name: 'g00.json', url: 'https://flickr.com/photos/greggman/albums/72157640592797285', },
     { name: 'g01.json', url: 'https://flickr.com/photos/greggman/albums/72157641206325234', },
     { name: 'g02.json', url: 'https://flickr.com/photos/greggman/albums/72157644327443920', },
@@ -47,6 +51,7 @@ import fs from 'fs';
     { name: 'g22.json', url: 'https://flickr.com/photos/greggman/albums/72157635450390289', },
     { name: 'g23.json', url: 'https://flickr.com/photos/greggman/albums/72157626026547251', },
     { name: 'g24.json', url: 'https://flickr.com/photos/greggman/albums/72157625547033028', },
+    */
   ];
 
 function makeFilter(reStr) {
@@ -72,6 +77,7 @@ async function getImageUrls() {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.setRequestInterception(true);
+  page.setUserAgent('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36')
   page.setDefaultTimeout(200000)
 
   page.on('request', (request) =>
