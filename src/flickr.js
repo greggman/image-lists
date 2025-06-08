@@ -3,8 +3,13 @@ import path from 'path';
 import fs from 'fs';
 
   const groupPages = [
-    { name: 'american-photographer.json', url: 'https://www.flickr.com/groups/americanphotographer/pool', },
+    { name: 'flickr-social-media.json', url: 'https://www.flickr.com/groups/flickrsocialmedia/pool/' },
+    { name: 'friendly_challenges.json', url: 'https://www.flickr.com/groups/_friendly_challenges/pool/' },
+    { name: 'critique.json', url: 'https://www.flickr.com/groups/critique/pool/' },
+    { name: 'art-photography.json', url: 'https://www.flickr.com/groups/art-photography/pool/' },
+    { name: 'parallax.json', url: 'https://www.flickr.com/groups/parallax/pool/' },
     /*
+    { name: 'american-photographer.json', url: 'https://www.flickr.com/groups/americanphotographer/pool', },
     { name: 'at-home.json', url: 'https://www.flickr.com/groups/flickr-at-home/pool/', },
     { name: 'wander.json', url: 'https://www.flickr.com/groups/pbwa/pool', },
     { name: 'mist.json', url: 'https://www.flickr.com/groups/2932332@N23/pool', },
