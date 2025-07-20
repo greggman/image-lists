@@ -1,5 +1,5 @@
 
-const numImages = 921759;
+const numImages = 826707;
 
 const numPerSlice = 50;
 
