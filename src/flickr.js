@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
   const groupPages = [
-    { name: 'flickr-social-media.json', url: 'https://www.flickr.com/groups/flickrsocialmedia/pool/' },
+    /* NSFW { name: 'flickr-social-media.json', url: 'https://www.flickr.com/groups/flickrsocialmedia/pool/' }, */
     { name: 'friendly_challenges.json', url: 'https://www.flickr.com/groups/_friendly_challenges/pool/' },
     { name: 'critique.json', url: 'https://www.flickr.com/groups/critique/pool/' },
     { name: 'art-photography.json', url: 'https://www.flickr.com/groups/art-photography/pool/' },
