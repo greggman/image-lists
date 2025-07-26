@@ -16,7 +16,7 @@ import fs from 'fs';
     { name: 'f-ology.json', url: 'https://www.flickr.com/groups/flickrology/pool', },
     { name: 'abandoned.json', url: 'https://www.flickr.com/groups/abandoned/pool', },
     { name: 'vanish.json', url: 'https://www.flickr.com/groups/parallax/pool', },
-    { name: 'catchy.json', url: 'https://www.flickr.com/groups/catchy/pool', },
+    { name: 'catchy.json', url: 'https://www.flickr.com/groups/catchy/pool', }, // NSFW
     { name: 'crazy-t.json', url: 'https://www.flickr.com/groups/crazy_tuesday/pool', },
     { name: 'friday.json', url: 'https://www.flickr.com/groups/flickrfriday/pool', },
     { name: 'utata.json', url: 'https://www.flickr.com/groups/utata/pool', },
